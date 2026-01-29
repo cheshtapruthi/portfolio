@@ -1,0 +1,135 @@
+.hero {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding-top: 90px;
+  position: relative;
+  overflow: hidden;
+  background: radial-gradient(circle at center right, rgba(14, 165, 233, 0.1) 0%, transparent 60%);
+}
+
+.hero-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.hero-content {
+  flex: 1;
+  max-width: 600px;
+}
+
+.subtitle {
+  font-size: 1.5rem;
+  color: var(--accent-color);
+  margin-bottom: 15px;
+  letter-spacing: 1px;
+  font-weight: 500;
+}
+
+.title {
+  font-size: 4.5rem;
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 20px;
+}
+
+.title span {
+  color: #fff;
+  -webkit-text-stroke: 1px var(--accent-color);
+  /* Or just plain white if the specific design is text-stroke */
+}
+
+/* Revert span to accent color based on request "pink accents" */
+.title span {
+  color: var(--accent-color);
+  -webkit-text-stroke: 0;
+}
+
+.roles {
+  font-size: 1.5rem;
+  color: #fff;
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+
+.description {
+  font-size: 1.1rem;
+  color: var(--secondary-text);
+  margin-bottom: 30px;
+  line-height: 1.6;
+  max-width: 90%;
+}
+
+.hero-image {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.img-box {
+  width: 450px;
+  height: 550px;
+  background: transparent;
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+  transition: transform 0.3s;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%);
+  mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%);
+}
+
+.img-box:hover {
+  transform: scale(1.02);
+}
+
+.img-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media screen and (max-width: 960px) {
+  .hero {
+    height: auto;
+    padding: 120px 0 60px 0;
+  }
+
+  .hero-container {
+    flex-direction: column-reverse;
+    text-align: center;
+  }
+
+  .hero-content {
+    margin-top: 50px;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .subtitle {
+    font-size: 1.2rem;
+  }
+
+  .title {
+    font-size: 3rem;
+  }
+
+  .roles {
+    font-size: 1.2rem;
+  }
+
+  .hero-image {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .img-box {
+    width: 90%;
+    max-width: 350px;
+    height: 400px;
+  }
+}
