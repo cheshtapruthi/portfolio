@@ -49,7 +49,7 @@ const Contact = () => {
     } catch (error) {
       console.error(error);
       setIsSuccess(false);
-      setStatus('Error: Could not connect to server.');
+      setStatus(`Error: ${error.message || 'Could not connect to server'} (Target: ${apiEndpoint})`);
     }
 
     // Auto hide alert after 4 seconds
