@@ -1,5 +1,10 @@
 import express from 'express';
 import cors from 'cors';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -7,9 +12,8 @@ const PORT = process.env.PORT || 5000;
 app.use(cors()); // Allow all CORS for dev
 app.use(express.json());
 
-app.get('/', (req, res) => {
-  res.send('Portfolio Backend is Running');
-});
+// Serve static files from the build directory
+app.use(express.static(path.join(__dirname, 'dist')));
 
 // Email Configuration
 import nodemailer from 'nodemailer';
@@ -55,6 +59,11 @@ app.post('/api/contact', async (req, res) => {
     }
     res.status(500).json({ success: false, message: "Failed to send email. Check server logs for details." });
   }
+});
+
+// Handle client-side routing - convert any other route to index.html
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'dist', 'index.html'));
 });
 
 app.listen(PORT, () => {
