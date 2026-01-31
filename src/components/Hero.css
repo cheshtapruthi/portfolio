@@ -23,7 +23,7 @@
 
 .subtitle {
   font-size: 1.5rem;
-  color: var(--accent-color);
+  color: whitesmoke;
   margin-bottom: 15px;
   letter-spacing: 1px;
   font-weight: 500;
@@ -34,17 +34,15 @@
   font-weight: 800;
   line-height: 1.1;
   margin-bottom: 20px;
-}
-
-.title span {
-  color: #fff;
-  -webkit-text-stroke: 1px var(--accent-color);
-  /* Or just plain white if the specific design is text-stroke */
-}
-
-/* Revert span to accent color based on request "pink accents" */
-.title span {
   color: var(--accent-color);
+  /* Cyan Blue for everything */
+  text-shadow: 0 0 20px rgba(14, 165, 233, 0.6), 0 0 40px rgba(14, 165, 233, 0.3);
+}
+
+.title span {
+  /* Inherit glow and color from parent */
+  color: inherit;
+  text-shadow: inherit;
   -webkit-text-stroke: 0;
 }
 
@@ -78,8 +76,7 @@
   overflow: hidden;
   position: relative;
   transition: transform 0.3s;
-  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%);
-  mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%);
+  box-shadow: 0 0 35px rgba(255, 255, 255, 0.6), inset 0 0 20px rgba(255, 255, 255, 0.3);
 }
 
 .img-box:hover {

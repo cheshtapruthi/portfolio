@@ -8,19 +8,36 @@ import Services from './components/Services';
 import Projects from './components/Projects';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import SectionTransition from './components/SectionTransition';
 
 function App() {
   return (
     <>
       <Navbar />
-      <Hero />
-      <About />
-      <Certifications />
-      <Skills />
-      <Services />
-      <Projects />
-      <Contact />
-      <Footer />
+      <SectionTransition>
+        <Hero />
+      </SectionTransition>
+      <SectionTransition>
+        <About />
+      </SectionTransition>
+      <SectionTransition>
+        <Certifications />
+      </SectionTransition>
+      <SectionTransition>
+        <Skills />
+      </SectionTransition>
+      <SectionTransition>
+        <Services />
+      </SectionTransition>
+      <SectionTransition>
+        <Projects />
+      </SectionTransition>
+      <SectionTransition>
+        <Contact />
+      </SectionTransition>
+      <SectionTransition>
+        <Footer />
+      </SectionTransition>
     </>
   );
 }
