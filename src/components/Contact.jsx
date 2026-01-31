@@ -20,7 +20,15 @@ const Contact = () => {
     setStatus('Sending...'); // Show sending status
 
     // Use environment variable for production, fallback to localhost for development
-    const apiEndpoint = import.meta.env.VITE_API_URL || "http://localhost:5000/api/contact";
+    let apiEndpoint = import.meta.env.VITE_API_URL || "http://localhost:5000/api/contact";
+
+    // Auto-fix URL if user forgot to append endpoint path
+    if (apiEndpoint && !apiEndpoint.includes('/api/contact')) {
+      // Strip trailing slash if present
+      apiEndpoint = apiEndpoint.replace(/\/$/, "");
+      apiEndpoint += "/api/contact";
+      console.log("Auto-corrected API URL to:", apiEndpoint);
+    }
 
     try {
       const response = await fetch(apiEndpoint, {
@@ -35,7 +43,14 @@ const Contact = () => {
         })
       });
 
-      const data = await response.json();
+      // Defensive JSON parsing
+      const text = await response.text();
+      let data;
+      try {
+        data = JSON.parse(text);
+      } catch (e) {
+        throw new Error(`Server returned non-JSON response: ${text.substring(0, 100)}...`);
+      }
 
       if (response.ok) {
         setIsSuccess(true);
